@@ -13,7 +13,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/edgee-cloud/plausible-component/badge.svg)](https://coveralls.io/github/edgee-cloud/plausible-component)
 [![GitHub issues](https://img.shields.io/github/issues/edgee-cloud/plausible-component.svg)](https://github.com/edgee-cloud/plausible-component/issues)
-[![Edgee Component Registry](https://img.shields.io/badge/Edgee_Component_Registry-Public-green.svg)](https://www.edgee.cloud/edgee/plausible-component)
+[![Edgee Component Registry](https://img.shields.io/badge/Edgee_Component_Registry-Public-green.svg)](https://www.edgee.cloud/edgee/plausible)
 
 
 This component enables seamless integration between [Edgee](https://www.edgee.cloud) and [Plausible](https://plausible.io), allowing you to collect and forward analytics events to your Plausible instance.
@@ -29,7 +29,7 @@ This component enables seamless integration between [Edgee](https://www.edgee.cl
 [[destinations.data_collection]]
 id = "plausible"
 file = "/var/edgee/components/plausible.wasm"
-settings.instance_url = "https://plausible.io"
+# settings.instance_url = "https://plausible.io"
 settings.domain "YOUR_SITE_DOMAIN"
 ```
 
@@ -53,7 +53,7 @@ The component maps Edgee events to plausible Event as follows:
 [[destinations.data_collection]]
 id = "plausible"
 file = "/var/edgee/components/plausible.wasm"
-settings.instance_url = "https://plausible.io"
+# settings.instance_url = "https://plausible.io"
 settings.domain "YOUR_SITE_DOMAIN"
 ```
 
