@@ -13,15 +13,13 @@ wit-version = "1.0.0"
 command = "cargo build --target wasm32-wasip2 --release"
 output_path = "target/wasm32-wasip2/release/plausible_edgee_component.wasm"
 
-[component.settings.instance_url]
-title = "Instance URL"
-type = "string"
-required = true
-description = "Base URL of your Plausible instance (e.g. \"https://plausible.io\")"
-default = "https://plausible.io"
-
 [component.settings.domain]
 title = "Site domain"
 type = "string"
 required = true
 description = "Domain name of the site in Plausible"
+
+[component.settings.instance_url]
+title = "Custom instance URL"
+type = "string"
+description = "Base URL of your self-hosted Plausible instance"

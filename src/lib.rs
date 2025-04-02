@@ -132,10 +132,16 @@ impl TryFrom<Dict> for Settings {
                     .cloned()
                     .ok_or_else(|| format!("Key not found in settings: {}", stringify!($key)))?
             };
+            ($dict:expr, $key:ident, $default:expr) => {
+                $dict
+                    .get(stringify!($key))
+                    .cloned()
+                    .unwrap_or_else(|| $default.into())
+            };
         }
 
         Ok(Settings {
-            instance_url: dict_get!(dict, instance_url),
+            instance_url: dict_get!(dict, instance_url, "https://plausible.io"),
             domain: dict_get!(dict, domain),
         })
     }
