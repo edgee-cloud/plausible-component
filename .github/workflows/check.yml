@@ -1,0 +1,73 @@
+name: Check
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  check:
+    name: cargo check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          target: wasm32-wasip2 # WebAssembly target
+          components: rustfmt
+      - uses: edgee-cloud/install-edgee-cli@v0.1.0
+      - run: edgee component build
+      - run: cargo check
+  fmt:
+    name: cargo fmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+          target: wasm32-wasip2
+      - uses: edgee-cloud/install-edgee-cli@v0.1.0
+      - run: edgee component build
+      - uses: actions-rust-lang/rustfmt@v1
+  clippy:
+    name: clippy
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+          target: wasm32-wasip2
+      - uses: edgee-cloud/install-edgee-cli@v0.1.0
+      - run: edgee component build
+      - uses: wearerequired/lint-action@master
+        with:
+          clippy: true
+  test:
+    name: cargo test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          target: wasm32-wasip2
+      - uses: edgee-cloud/install-edgee-cli@v0.1.0
+      - run: edgee component build
+      - run: cargo test
+
+  coverage:
+    name: coverage & coveralls
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          target: wasm32-wasip2
+      - uses: taiki-e/install-action@cargo-llvm-cov
+      - uses: edgee-cloud/install-edgee-cli@v0.1.0
+      - run: edgee component build
+      - run: cargo llvm-cov --all-features --lcov --output-path lcov.info
+      - uses: coverallsapp/github-action@v2
