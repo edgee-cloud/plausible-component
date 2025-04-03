@@ -30,7 +30,7 @@ This component enables seamless integration between [Edgee](https://www.edgee.cl
 id = "plausible"
 file = "/var/edgee/components/plausible.wasm"
 # settings.instance_url = "https://plausible.io"
-settings.domain "YOUR_SITE_DOMAIN"
+settings.domain = "YOUR_SITE_DOMAIN"
 ```
 
 
@@ -54,7 +54,7 @@ The component maps Edgee events to plausible Event as follows:
 id = "plausible"
 file = "/var/edgee/components/plausible.wasm"
 # settings.instance_url = "https://plausible.io"
-settings.domain "YOUR_SITE_DOMAIN"
+settings.domain = "YOUR_SITE_DOMAIN"
 ```
 
 
@@ -82,11 +82,12 @@ edgee components build
 Test commands:
 ```bash
 edgee components test
+cargo test
 ```
 
 Test coverage command:
 ```bash
-cargo test
+cargo llvm-cov --all-features
 ```
 
 ### Contributing
