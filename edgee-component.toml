@@ -5,6 +5,11 @@ name = "plausible"
 version = "1.0.0"
 category = "data-collection"
 subcategory = "analytics"
+repository = "https://github.com/edgee-cloud/plausible-component"
+description = '''
+This component enables seamless integration between [Edgee](https://www.edgee.cloud) and [Plausible](https://plausible.io),
+allowing you to collect and forward analytics events to your Plausible instance.
+'''
 language = "Rust"
 icon-path = "icon.png"
 wit-version = "1.0.0"
