@@ -15,8 +15,8 @@ icon-path = "icon.png"
 wit-version = "1.0.0"
 
 [component.build]
-command = "cargo build --target wasm32-wasip2 --release"
-output_path = "target/wasm32-wasip2/release/plausible_edgee_component.wasm"
+command = "cargo build --target wasm32-wasip2 --release && cp ./target/wasm32-wasip2/release/plausible_edgee_component.wasm plausible.wasm"
+output_path = "plausible.wasm"
 
 [component.settings.domain]
 title = "Site domain"
