@@ -129,12 +129,14 @@ impl TryFrom<Dict> for Settings {
             ($dict:expr, $key:ident) => {
                 $dict
                     .get(stringify!($key))
+                    .filter(|s| !s.is_empty())
                     .cloned()
                     .ok_or_else(|| format!("Key not found in settings: {}", stringify!($key)))?
             };
             ($dict:expr, $key:ident, $default:expr) => {
                 $dict
                     .get(stringify!($key))
+                    .filter(|s| !s.is_empty())
                     .cloned()
                     .unwrap_or_else(|| $default.into())
             };
@@ -265,6 +267,27 @@ mod tests {
                 "instance_url".to_string(),
                 "https://plausible.io".to_string(),
             ),
+            ("domain".to_string(), "edgee.cloud".to_string()),
+        ];
+        let result = Component::page(event, settings);
+
+        assert_eq!(result.is_err(), false);
+        let edgee_request = result.unwrap();
+        assert_eq!(edgee_request.method, HttpMethod::Post);
+        assert_eq!(edgee_request.body.is_empty(), false);
+        assert_eq!(edgee_request.url.starts_with("https://plausible.io"), true);
+    }
+
+    #[test]
+    fn page_works_fine_without_instance_url() {
+        let event = sample_page_event(
+            Some(Consent::Granted),
+            "abc".to_string(),
+            "fr".to_string(),
+            true,
+        );
+        let settings = vec![
+            ("instance_url".to_string(), String::new()),
             ("domain".to_string(), "edgee.cloud".to_string()),
         ];
         let result = Component::page(event, settings);
