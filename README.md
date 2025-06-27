@@ -26,7 +26,7 @@ This component enables seamless integration between [Edgee](https://www.edgee.cl
 3. Add the following configuration to your `edgee.toml`:
 
 ```toml
-[[destinations.data_collection]]
+[[components.data_collection]]
 id = "plausible"
 file = "/var/edgee/components/plausible.wasm"
 # settings.instance_url = "https://plausible.io"
@@ -50,7 +50,7 @@ The component maps Edgee events to plausible Event as follows:
 
 ### Basic Configuration
 ```toml
-[[destinations.data_collection]]
+[[components.data_collection]]
 id = "plausible"
 file = "/var/edgee/components/plausible.wasm"
 # settings.instance_url = "https://plausible.io"
