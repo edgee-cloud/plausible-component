@@ -8,10 +8,6 @@ subcategory = "analytics"
 repository = "https://github.com/edgee-cloud/plausible-component"
 documentation = "https://www.edgee.cloud/docs/components/data-collection/plausible"
 description = '''
-# Plausible Analytics Component
-
-[https://www.edgee.cloud/edgee/plausible-analytics](https://www.edgee.cloud/edgee/plausible-analytics)
-
 ## Overview
 
 The **Plausible Analytics** component by Edgee enables seamless integration of Plausible Analytics into your Edgee projects.
